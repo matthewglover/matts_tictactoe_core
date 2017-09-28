@@ -1,6 +1,6 @@
-require "core/alpha_beta"
+require "matts_tictactoe_core/alpha_beta"
 
-module Core
+module MattsTictactoeCore
   class ComputerPlayer
     
     DefaultSleepTime = 0.5

@@ -1,8 +1,8 @@
-require "core/board"
-require "core/human_player"
-require "core/computer_player"
+require "matts_tictactoe_core/board"
+require "matts_tictactoe_core/human_player"
+require "matts_tictactoe_core/computer_player"
 
-module Core
+module MattsTictactoeCore
   class Game
     
     attr_reader :board, :player_x_type, :player_o_type
@@ -43,11 +43,11 @@ module Core
     end
 
     def build_computer_player
-      Core::ComputerPlayer.new
+      ComputerPlayer.new
     end
     
     def build_human_player
-      Core::HumanPlayer.new
+      HumanPlayer.new
     end
   end
 end

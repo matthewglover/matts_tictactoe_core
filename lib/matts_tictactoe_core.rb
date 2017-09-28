@@ -1,5 +1,8 @@
 require "matts_tictactoe_core/version"
-
-module MattsTictactoeCore
-  # Your code goes here...
-end
+require "matts_tictactoe_core/alpha_beta"
+require "matts_tictactoe_core/board"
+require "matts_tictactoe_core/computer_player"
+require "matts_tictactoe_core/game"
+require "matts_tictactoe_core/human_player"
+require "matts_tictactoe_core/lines"
+require "matts_tictactoe_core/mini_max"

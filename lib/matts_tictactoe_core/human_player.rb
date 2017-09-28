@@ -1,4 +1,4 @@
-module Core
+module MattsTictactoeCore 
   class HumanPlayer
     def type 
       :human 
