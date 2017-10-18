@@ -1,6 +1,64 @@
 require "matts_tictactoe_core/board"
 
 describe MattsTictactoeCore::Board do
+  Board = MattsTictactoeCore::Board
+
+  context "with explicit argument of size 4" do
+    it "creates a 4x4 board" do
+      board = Board.ofSize(4)
+      expect(board.size).to eq(4)
+    end
+  end
+
+  context "with explicit argument of size 3" do
+    it "creates a 3x3 board" do
+      board = Board.ofSize(3)
+      expect(board.size).to eq(3)
+    end
+  end
+
+  context "without explicit size argument" do
+    it "creates a 3x3 board" do
+      board = Board.new()
+      expect(board.size).to eq(3)
+    end
+  end
+
+  context "4x4 board" do
+    it "move returns a 4x4 board" do
+      board = Board.ofSize(4)
+      next_board = board.move(10)
+      expect(next_board.size).to eq(4)
+    end
+
+    it "line of 3 is not a winning line" do
+      board = run_moves([1, 5, 2, 6, 3])
+      expect(board.winner?).to be false
+    end
+
+    it "row of 4 is a winning line" do
+      board = run_moves([1, 5, 2, 6, 3, 7, 4])      
+      expect(board.winner?).to be true
+      expect(board.winner).to be :x
+    end
+
+    it "column of 4 is a winning line" do
+      board = run_moves([1, 2, 5, 3, 9, 4, 13])
+      expect(board.winner?).to be true
+      expect(board.winner).to be :x
+    end
+
+    it "diagonal of 4 is a winning line" do
+      board = run_moves([4, 1, 7, 2, 10, 3, 13])
+      expect(board.winner?).to be true
+      expect(board.winner).to be :x
+    end
+    
+    def run_moves(moves)
+      moves.reduce(Board.ofSize(4)) { |board, square| board.move(square) }
+    end
+  end
+
   describe "#moves" do
     it "empty for new Board" do
       expect(build_board().moves).to eq([])
@@ -145,6 +203,10 @@ describe MattsTictactoeCore::Board do
 
     it "not equal when moves are different" do
       expect(build_board(1)).not_to eq(build_board)
+    end
+
+    it "not equal when board's different size" do
+      expect(Board.ofSize(3)).not_to eq(Board.ofSize(4))
     end
   end
 
