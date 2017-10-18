@@ -9,11 +9,19 @@ module MattsTictactoeCore
     
     def initialize(options = {})
       @max_depth = options.fetch(:max_depth, 6)
-      @board = options.fetch(:board, Board.new)
+      @board = build_board(options)
       @player_x_type = options[:player_x_type]
       @player_o_type = options[:player_o_type]
       @computer_player = options.fetch(:computer_player, build_computer_player)
       @human_player = options.fetch(:human_player, build_human_player)
+    end
+
+    def build_board(options)
+      options.fetch(:board, build_new_board(options));
+    end
+
+    def build_new_board(options)
+      Board.ofSize(options.fetch(:board_size, 3))
     end
 
     def next_player

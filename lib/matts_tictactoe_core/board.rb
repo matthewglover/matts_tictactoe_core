@@ -54,7 +54,9 @@ module MattsTictactoeCore
     end
 
     def ==(other)
-      other.class == self.class && other.moves == moves
+      other.class == self.class && 
+        other.size == size &&
+        other.moves == moves
     end
 
     def empty_squares

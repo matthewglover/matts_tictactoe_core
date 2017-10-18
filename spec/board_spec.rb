@@ -204,6 +204,10 @@ describe MattsTictactoeCore::Board do
     it "not equal when moves are different" do
       expect(build_board(1)).not_to eq(build_board)
     end
+
+    it "not equal when board's different size" do
+      expect(Board.ofSize(3)).not_to eq(Board.ofSize(4))
+    end
   end
 
   describe "empty_squares" do
