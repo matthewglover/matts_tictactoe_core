@@ -3,10 +3,15 @@ require "matts_tictactoe_core/lines"
 module MattsTictactoeCore
   class Board
 
-    attr_reader :moves
+    def self.ofSize(size)
+      Board.new([], size: size)
+    end
 
-    def initialize(moves = [])
+    attr_reader :moves, :size
+
+    def initialize(moves = [], size: 3) 
       @moves = moves
+      @size = size;
       @lines = Lines.new(self)
     end
 
@@ -18,12 +23,8 @@ module MattsTictactoeCore
       size ** 2
     end
 
-    def size
-      3
-    end
-
     def move(square)
-      valid_move?(square) ? Board.new(moves + [square]) : self
+      valid_move?(square) ? Board.new(moves + [square], size: size) : self
     end
 
     def valid_move?(square)
