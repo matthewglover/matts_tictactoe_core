@@ -24,7 +24,7 @@ describe MattsTictactoeCore::Board do
     end
   end
 
-  context "4x4 board", focus: true do
+  context "4x4 board" do
     it "move returns a 4x4 board" do
       board = Board.ofSize(4)
       next_board = board.move(10)

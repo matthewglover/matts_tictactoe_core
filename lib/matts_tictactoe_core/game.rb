@@ -43,7 +43,7 @@ module MattsTictactoeCore
     end
 
     def build_computer_player
-      ComputerPlayer.new
+      ComputerPlayer.new(max_depth: @max_depth)
     end
     
     def build_human_player
